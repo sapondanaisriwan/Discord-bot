@@ -1,4 +1,6 @@
 import discord
+from discord import embeds
+from discord.colour import Color
 from discord.ext import commands
 from datetime import datetime, timedelta
 
@@ -17,8 +19,14 @@ async def test(ctx, *, agr): # * รับข้อความมาทั้�
     await ctx.channel.send(f'You typed {agr}')
 
 @bot.command()
-async def help(ctx):
-    await ctx.channel.send('`😎`')
+async def help(ctx): # 0x = base 16
+    emBed = discord.Embed(title='Testing', description='Show all avaiable bot commands', color=0x32a852)
+    emBed.add_field(name='help', value='Get help command', inline=False)
+    emBed.add_field(name='test', value="Respond message that you've send", inline=False)
+    emBed.add_field(name='send', value='Send something to user', inline=False)
+    emBed.set_thumbnail(url='https://c.tenor.com/XhYqu5fu4LgAAAAd/boiled-soundcloud-boiled.gif')
+    emBed.set_footer(text='test footer', icon_url='https://c.tenor.com/XhYqu5fu4LgAAAAd/boiled-soundcloud-boiled.gif')
+    await ctx.channel.send(embed=emBed)
 
 # async/await
 # await จะถูกกัาหนดไว้ให้ใช้ตอนไหน ให้ดูใน docuemnt
@@ -35,4 +43,4 @@ async def on_message(message):
         await bot.logout()
     await bot.process_commands(message) # ประมวลผลว่าอันไหนควรรันก่อน
 
-bot.run("ODczNDI5Njk3NzkzNTE1NTUx.YQ4Syw.-vMvXR4heX_dWTKJePSezIqpn1E")
+bot.run("ODczNDI5Njk3NzkzNTE1NTUx.YQ4Syw.XEAh6bBJN5QxXNyW3OCXsL0alZk")
